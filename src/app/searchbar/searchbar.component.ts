@@ -10,12 +10,8 @@ export class SearchbarComponent {
 
   searchTerm: string = '';
 
-
-
-
   search(event:Event){
-    this.searchTerm=(<HTMLInputElement>event.target).value
-    this.searchEvent.emit(this.searchTerm);
+    this.searchEvent.emit((<HTMLInputElement>event.target).value);
   }
 
 }

@@ -8,34 +8,36 @@ import { Content } from './data/Content';
 })
 export class AppComponent implements OnInit{
   
-  data :Content[] = []
+  data :Content[] = [];
 
   constructor(private apiService: ApiServiceService){
 
   }
   ngOnInit(): void {
-    this.getAllData();
+    this.getData();
   }
 
 
 
   onSearch(searchTerm: string) {
-    console.log(searchTerm);
+
+    this.getData(searchTerm);
+   
+
   }
 
 
 
-  getAllData() {
-
+  getData(searchTerm?: string) {
     try{
-    this.apiService.getAllData().subscribe((data) => {
-      this.data = data;
-      console.log(data)
-    });
-    }
-    catch(err){
-      console.log(err)
-    }
+      this.apiService.getData(searchTerm).subscribe((data) => {
+        this.data=data;
+        console.log(data)
+      });
+      }
+      catch(err){
+        console.log(err)
+      }
 
 }
 
