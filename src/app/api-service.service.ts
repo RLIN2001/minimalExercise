@@ -11,8 +11,9 @@ export class ApiServiceService {
   constructor(private http: HttpClient) { 
   }
 
-  getAllData(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/getAllData`);
+  getData(title? : string): Observable<any[]> {
+    const url = title ? `${this.apiUrl}/getData?title=${title}` : `${this.apiUrl}/getData`;
+    return this.http.get<any[]>(url);
   }
 
   deleteContent(contentId: string): Observable<void> {

@@ -18,6 +18,13 @@ export class AppComponent implements OnInit{
   }
 
 
+
+  onSearch(searchTerm: string) {
+    console.log(searchTerm);
+  }
+
+
+
   getAllData() {
 
     try{
@@ -43,6 +50,8 @@ removeContent(contentId: string){
       console.log(err)
     }
 }
+
+
 }
 
 
