@@ -29,27 +29,35 @@ export class AppComponent implements OnInit{
 
 
   getData(searchTerm?: string) {
-    try{
-      this.apiService.getData(searchTerm).subscribe((data) => {
-        this.data=data;
-      });
+    this.apiService.getData(searchTerm).subscribe(
+      (data) => {
+        // Handle successful response
+        this.data = data;
+      },
+      (error) => {
+        // Handle errors here
+        console.error(error);
       }
-      catch(err){
-        console.log(err)
-      }
+    );
 
 }
 
 
 removeContent(contentId: string){
-  try{
-    this.apiService.deleteContent(contentId).subscribe(() => {
-      this.data=this.data.filter((item) => item.contentId !== contentId);;
-    });
+
+  
+  this.apiService.deleteContent(contentId).subscribe(
+    () => {
+      // Item deleted successfully, update the data
+      this.data = this.data.filter((item) => item.contentId !== contentId);
+    },
+    (error) => {
+      // Handle errors here
+      console.error(error);
     }
-    catch(err){
-      console.log(err)
-    }
+  );
+  
+    
 }
 
 
