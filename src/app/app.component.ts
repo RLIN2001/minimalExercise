@@ -32,7 +32,6 @@ export class AppComponent implements OnInit{
     try{
       this.apiService.getData(searchTerm).subscribe((data) => {
         this.data=data;
-        console.log(data)
       });
       }
       catch(err){
