@@ -15,8 +15,8 @@ export class ApiServiceService {
     return this.http.get<any[]>(`${this.apiUrl}/getAllData`);
   }
 
-  deleteItem(contentId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/RemoveContentFromId/${contentId}`);
+  deleteContent(contentId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/RemoveContentFromId?contentId=${contentId}`);
   }
 
 

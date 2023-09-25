@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from './api-service.service';
-
+import { Content } from './data/Content';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +8,7 @@ import { ApiServiceService } from './api-service.service';
 })
 export class AppComponent implements OnInit{
   
-  data: any;
+  data :Content[] = []
 
   constructor(private apiService: ApiServiceService){
 
@@ -30,6 +30,18 @@ export class AppComponent implements OnInit{
       console.log(err)
     }
 
+}
+
+
+removeContent(contentId: string){
+  try{
+    this.apiService.deleteContent(contentId).subscribe(() => {
+      this.data=this.data.filter((item) => item.contentId !== contentId);;
+    });
+    }
+    catch(err){
+      console.log(err)
+    }
 }
 }
 

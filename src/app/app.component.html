@@ -1,8 +1,6 @@
 <div>
     <div>
-        <div style="display: flex; flex-direction: row; justify-content: center;">
-        <input type="search" >
-        </div>
+        <app-searchbar />
         <br>
         <div *ngIf="data" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1%; width: 100%;">
             <div *ngFor="let d of data" class="card">
@@ -21,6 +19,8 @@
                 <h1>{{d.title}}</h1>
                 <p>ID: {{d.contentId}}</p>
                 <p>contentType: {{d.contentType}}</p>
+
+                <button style="background-color: red;" (click)="removeContent(d.contentId)">REMOVE CONTENT</button>
             </div>
             </div>
         </div>
