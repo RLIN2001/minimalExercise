@@ -7,6 +7,7 @@ import { Content } from './data/Content';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
   
   data :Content[] = [];
 
@@ -17,7 +18,9 @@ export class AppComponent implements OnInit{
     this.getData();
   }
 
-
+  openAlert(c: Content) {
+    alert("id: "+c.contentId+"\n"+"title: "+c.title+ "\n"+"type: "+ c.contentType+ "\n"+ "creation date: "+ c.creationDate+ "\n"+"duration: "+ c.onDemandDuration)
+  }
 
   onSearch(searchTerm: string) {
 
@@ -33,6 +36,7 @@ export class AppComponent implements OnInit{
       (data) => {
         // Handle successful response
         this.data = data;
+        console.log(data)
       },
       (error) => {
         // Handle errors here

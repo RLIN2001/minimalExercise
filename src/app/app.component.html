@@ -1,11 +1,11 @@
 <div>
-    <div>
+    <div style="position: relative;width: 100%; height: 100%;">
         <br>
         <app-searchbar (searchEvent)="onSearch($event)" ></app-searchbar>
         <br>
 
         <div *ngIf="data.length > 0; else noDataMessage" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1%; width: 100%;">
-            <div *ngFor="let d of data" class="card">
+            <div *ngFor="let d of data" class="card" (click)="openAlert(d)">
             
 
                 <div style="display: flex; flex-direction: column; width: 100%; height: 100%;">
@@ -25,6 +25,9 @@
                 <button style="background-color: red;" (click)="removeContent(d.contentId)">REMOVE CONTENT</button>
             </div>
             </div>
+
+
+
         </div>
 
 
@@ -33,8 +36,8 @@
         </ng-template>
     
 
-      
     </div>
+
   </div>
 
 
