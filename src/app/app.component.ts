@@ -47,9 +47,10 @@ export class AppComponent implements OnInit{
 }
 
 
-removeContent(contentId: string){
-
+removeContent(contentId: string,event: Event){
   
+  event.stopPropagation();
+
   this.apiService.deleteContent(contentId).subscribe(
     () => {
       // Item deleted successfully, update the data
